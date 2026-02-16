@@ -38,6 +38,30 @@ window.addEventListener('mousemove', (event) => {
     mouse.y = event.y;
 });
 
+// 3. LÓGICA DO MENU MOBILE
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+
+if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        
+        const icon = mobileMenuButton.querySelector('i');
+        if (icon.classList.contains('ph-list')) {
+            icon.classList.replace('ph-list', 'ph-x');
+        } else {
+            icon.classList.replace('ph-x', 'ph-list');
+        }
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.querySelector('i').classList.replace('ph-x', 'ph-list');
+        });
+    });
+}
+
 // Classe de Partícula
 class Particle {
     constructor(x, y, directionX, directionY, size, color) {
