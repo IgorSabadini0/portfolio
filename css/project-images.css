@@ -1,0 +1,18 @@
+/* Mantém as capturas completas, independentemente da proporção de cada projeto. */
+.project-media img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+.project-media-clinic {
+    background: #e8f4f1;
+}
+
+.clinic-chrome {
+    background: #f7fbfa;
+    color: #24554d;
+}
