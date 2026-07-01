@@ -1,394 +1,304 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="scroll-smooth">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio | Desenvolvedor</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Portfólio de Igor Sabadini, desenvolvedor focado em criar experiências digitais rápidas, responsivas e bem construídas.">
+    <meta property="og:title" content="Igor Sabadini — Desenvolvedor">
+    <meta property="og:description" content="Ideias transformadas em produtos digitais com design, código e propósito.">
+    <meta property="og:type" content="website">
+    <title>Igor Sabadini — Desenvolvedor</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="assets/folder.png" type="image/png">
-
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#6366f1', // Indigo
-                        secondary: '#ec4899', // Pink
-                        dark: '#0f172a', // Slate 900
-                        card: '#1e293b', // Slate 800
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+    <script src="js/script.js" defer></script>
 </head>
 
-<body class="antialiased selection:bg-primary selection:text-white">
+<body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+    <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+    <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="pointer-glow" aria-hidden="true"></div>
 
-    <!-- Canvas para Animação de Fundo -->
-    <canvas id="bg-canvas"></canvas>
+    <header class="site-header" id="site-header">
+        <a class="brand" href="#home" aria-label="Igor Sabadini — início">
+            <span class="brand-mark">IS</span>
+            <span class="brand-name">Igor Sabadini</span>
+        </a>
 
-    <!-- Navegação -->
-    <nav class="fixed w-full z-50 top-0 transition-all duration-300 p-4" id="navbar">
-        <div
-            class="max-w-7xl mx-auto glass rounded-2xl px-6 py-3 flex justify-between items-center shadow-lg shadow-primary/5">
-            <a href="#" class="font-display font-bold text-2xl tracking-tighter hover:text-primary transition-colors">
-                Igor<span class="text-primary">.</span>Portfolio
+        <nav class="desktop-nav" aria-label="Navegação principal">
+            <a href="#home" class="nav-link active">Início</a>
+            <a href="#projects" class="nav-link">Projetos</a>
+            <a href="#about" class="nav-link">Sobre</a>
+        </nav>
+
+        <a class="header-cta" href="#contact">
+            <span>Vamos conversar</span>
+            <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="mobile-menu" aria-expanded="false">
+            <span></span><span></span>
+        </button>
+
+        <div class="mobile-menu" id="mobile-menu" aria-hidden="true" inert>
+            <nav aria-label="Navegação mobile">
+                <a href="#home"><span>01</span> Início</a>
+                <a href="#projects"><span>02</span> Projetos</a>
+                <a href="#about"><span>03</span> Sobre</a>
+                <a href="#contact"><span>04</span> Contato</a>
+            </nav>
+            <div class="mobile-menu-footer">
+                <a href="mailto:igorsabadini157@gmail.com">igorsabadini157@gmail.com</a>
+                <span>São Paulo, Brasil</span>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero section-shell" id="home">
+            <div class="hero-copy">
+                <div class="eyebrow hero-intro">
+                    <span class="status-dot"></span>
+                    Disponível para novos projetos
+                </div>
+
+                <h1 class="hero-title" aria-label="Eu transformo ideias em produtos digitais">
+                    <span class="title-line"><span>Eu transformo</span></span>
+                    <span class="title-line"><span>ideias em produtos</span></span>
+                    <span class="title-line accent-line"><span>digitais<span class="title-dot">.</span></span></span>
+                </h1>
+
+                <div class="hero-bottom">
+                    <p>Desenvolvedor focado em criar experiências digitais <strong>rápidas, intuitivas e bem construídas</strong> — da ideia ao deploy.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary magnetic" href="#projects">
+                            Explorar projetos
+                            <i class="ph ph-arrow-down" aria-hidden="true"></i>
+                        </a>
+                        <a class="text-link" href="https://github.com/IgorSabadini0" target="_blank" rel="noopener noreferrer">
+                            GitHub <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual" aria-label="Ilustração de um ambiente de desenvolvimento">
+                <div class="orbit orbit-one" aria-hidden="true"></div>
+                <div class="orbit orbit-two" aria-hidden="true"></div>
+                <div class="floating-tag tag-one"><i class="ph-fill ph-code" aria-hidden="true"></i> Front-end</div>
+                <div class="floating-tag tag-two"><i class="ph-fill ph-database" aria-hidden="true"></i> Back-end</div>
+
+                <div class="code-window" data-tilt>
+                    <div class="window-bar">
+                        <div class="window-dots"><span></span><span></span><span></span></div>
+                        <span>portfolio.js</span>
+                        <i class="ph ph-code" aria-hidden="true"></i>
+                    </div>
+                    <div class="code-content" aria-hidden="true">
+                        <div><span class="code-purple">const</span> <span class="code-blue">developer</span> = {</div>
+                        <div class="indent"><span class="code-muted">name:</span> <span class="code-green">'Igor Sabadini'</span>,</div>
+                        <div class="indent"><span class="code-muted">focus:</span> [</div>
+                        <div class="indent-2"><span class="code-green">'experiência'</span>,</div>
+                        <div class="indent-2"><span class="code-green">'performance'</span>,</div>
+                        <div class="indent-2"><span class="code-green">'resultado'</span></div>
+                        <div class="indent">],</div>
+                        <div class="indent"><span class="code-muted">building:</span> <span class="code-orange">true</span></div>
+                        <div>};</div>
+                        <div class="code-comment">// transformando desafios em soluções</div>
+                        <div><span class="code-blue">developer</span>.<span class="code-yellow">create</span><span class="cursor-code">()</span></div>
+                    </div>
+                    <div class="window-footer">
+                        <span><i class="ph-fill ph-git-branch" aria-hidden="true"></i> main</span>
+                        <span><i class="ph-fill ph-check-circle" aria-hidden="true"></i> Ready</span>
+                    </div>
+                </div>
+            </div>
+
+            <a class="scroll-cue" href="#projects" aria-label="Rolar até os projetos">
+                <span>Scroll</span><i class="ph ph-arrow-down" aria-hidden="true"></i>
             </a>
+        </section>
 
-            <div class="hidden md:flex gap-8 font-medium text-sm text-slate-300">
-                <a href="#home" class="hover:text-white transition-colors">Início</a>
-                <a href="#projects" class="hover:text-white transition-colors">Projetos</a>
-                <a href="#contact" class="hover:text-white transition-colors">Contato</a>
-            </div>
-
-            <a href="#contact"
-                class="hidden md:block bg-primary/20 hover:bg-primary/30 text-primary border border-primary/50 px-5 py-2 rounded-full font-medium text-sm transition-all hover:scale-105">
-                Vamos conversar
-            </a>
-
-            <button id="mobile-menu-button" class="md:hidden text-2xl text-white">
-                <i class="ph ph-list"></i>
-            </button>
-        </div>
-
-        <div id="mobile-menu"
-            class="hidden md:hidden mt-2 glass rounded-2xl p-4 flex flex-col gap-4 text-center font-medium text-slate-300">
-            <a href="#home" class="hover:text-white transition-colors py-2">Início</a>
-            <a href="#projects" class="hover:text-white transition-colors py-2">Projetos</a>
-            <a href="#contact" class="hover:text-white transition-colors py-2">Contato</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse-slow"
-            style="animation-delay: 2s;"></div>
-
-        <div class="container mx-auto px-6 text-center z-10 reveal active">
-            <div
-                class="inline-block mb-4 px-4 py-1.5 rounded-full border border-slate-700 bg-slate-800/50 backdrop-blur-sm">
-                <span class="text-xs font-bold tracking-wider text-primary uppercase">Igor Sabadini</span>
-            </div>
-
-            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight leading-tight">
-                Criando experiências <br />
-                <span class="text-gradient animate-float inline-block">Digitais Incríveis</span>
-            </h1>
-
-            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                Desenvolvedor. Transformo ideias em código.
-            </p>
-
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#projects"
-                    class="bg-primary hover:bg-indigo-600 text-white px-8 py-4 rounded-full font-bold transition-all hover:shadow-lg hover:shadow-primary/40 hover:-translate-y-1 flex items-center justify-center gap-2">
-                    Ver Projetos <i class="ph-bold ph-arrow-down"></i>
-                </a>
-                <a href="https://github.com/IgorSabadini0" target="_blank"
-                    class="glass hover:bg-slate-800 text-white px-8 py-4 rounded-full font-bold transition-all hover:-translate-y-1 flex items-center justify-center gap-2">
-                    <i class="ph-bold ph-github-logo"></i> Meu GitHub
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <div class="border-y border-slate-800 bg-slate-900/50 backdrop-blur-sm py-10">
-        <div class="container mx-auto px-6">
-            <p class="text-center text-slate-500 text-sm mb-6 uppercase tracking-widest font-bold">Tech Stack Principal
-            </p>
-
-            <div class="flex flex-wrap justify-center gap-8 md:gap-4 opacity-100 transition-all duration-500">
-
-                <div class="tech-icon" style="background: #fff0e6;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"
-                        height="40">
+        <section class="tech-marquee" aria-label="Tecnologias utilizadas">
+            <div class="marquee-track">
+                <div class="marquee-group">
+                    <span>HTML5</span><i></i><span>CSS3</span><i></i><span>JavaScript</span><i></i><span>Node.js</span><i></i><span>PHP</span><i></i><span>Python</span><i></i><span>MySQL</span><i></i><span>Git</span><i></i><span>Docker</span><i></i><span>Figma</span><i></i>
                 </div>
-
-                <div class="tech-icon" style="background: #e6f0ff;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"
-                        height="40">
-                </div>
-
-                <div class="tech-icon" style="background: #fffde7;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                        alt="JavaScript" height="40">
-                </div>
-
-                <div class="tech-icon" style="background: #f0f0ff;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"
-                        height="40">
-                </div>
-
-                <div class="tech-icon" style="background: #e8f4f8;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                        alt="Python" height="40">
-                </div>
-
-                <div class="tech-icon" style="background: #e6fffa;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-plain-wordmark.svg"
-                        alt="Node.js" height="40">
-                </div>
-
-                <div class="tech-icon" style="background: #effff0;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg"
-                        alt="Android Studio" height="40">
-                </div>
-
-                <div class="tech-icon" style="background: #e3f2fd;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"
-                        height="40">
-                </div>
-
-                <div class="tech-icon" style="background: #ffebee;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-plain-wordmark.svg"
-                        alt="Git" height="40">
-                </div>
-
-                <div class="tech-icon" style="background: #e1f5fe;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                        alt="Docker" height="40">
-                </div>
-
-                <div class="tech-icon" style="background: #f5f5f5;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"
-                        height="40">
-                </div>
-
-                <div class="tech-icon" style="background: #e8f5e9;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Microsoft_Office_Excel_%282019%E2%80%932025%29.svg"
-                        alt="Excel" height="38">
-                </div>
-
-                <div class="tech-icon" style="background: #f3e5f5;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"
-                        height="40">
+                <div class="marquee-group" aria-hidden="true">
+                    <span>HTML5</span><i></i><span>CSS3</span><i></i><span>JavaScript</span><i></i><span>Node.js</span><i></i><span>PHP</span><i></i><span>Python</span><i></i><span>MySQL</span><i></i><span>Git</span><i></i><span>Docker</span><i></i><span>Figma</span><i></i>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Seção Projetos -->
-    <section id="projects" class="py-24 relative">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Meus Projetos</h2>
-                <div class="h-1 w-20 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
-                <p class="text-slate-400 mt-4 max-w-xl mx-auto">
-                    Aqui estão os 3 destaques do meu trabalho recente. Cada projeto foi construído para resolver um
-                    problema real.
-                </p>
+        <section class="projects section-shell" id="projects">
+            <div class="section-heading reveal">
+                <div>
+                    <span class="section-index">01 / PROJETOS</span>
+                    <h2>Trabalhos<br><em>selecionados</em></h2>
+                </div>
+                <p>Projetos que combinam estratégia, interface e desenvolvimento para resolver problemas reais.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <!-- PROJETO 1 -->
-                <div
-                    class="project-card group bg-card border border-slate-700 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 reveal hover:-translate-y-2">
-                    <div class="relative overflow-hidden h-48 bg-slate-700">
-                        <!-- Imagem do Projeto (Placeholder - Substitua o src) -->
-                        <img src="assets/pfadvocacia_site.png" alt="Projeto 1"
-                            class="project-img w-full h-full object-cover transition-transform duration-500">
-                        <div
-                            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                            <a href="https://palharesferreiraadvocacia.com.br" target="_blank"
-                                class="bg-white text-slate-900 p-3 rounded-full hover:scale-110 transition-transform"
-                                title="Ver Demo">
-                                <i class="ph-bold ph-arrow-square-out text-xl"></i>
-                            </a>
-                            <a href="https://github.com/IgorSabadini0/palharesferreiraadvocacia" target="_blank"
-                                class="bg-slate-900 text-white p-3 rounded-full hover:scale-110 transition-transform"
-                                title="Ver Código">
-                                <i class="ph-bold ph-github-logo text-xl"></i>
-                            </a>
+            <div class="project-list">
+                <article class="project project-featured reveal" data-project="01">
+                    <a class="project-media" href="https://palharesferreiraadvocacia.com.br" target="_blank" rel="noopener noreferrer" aria-label="Abrir Palhares Ferreira Advocacia">
+                        <div class="browser-chrome">
+                            <div><span></span><span></span><span></span></div>
+                            <p>palharesferreiraadvocacia.com.br</p>
+                            <i class="ph ph-lock-simple" aria-hidden="true"></i>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3
-                                class="font-display text-xl font-bold text-white group-hover:text-primary transition-colors">
-                                Palhares Ferreira Advocacia - Site</h3>
-                            <i class="ph-bold ph-globe text-slate-500"></i>
-                        </div>
-                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">
-                            Um site institucional moderno para escritório de advocacia. Inclui design responsivo,
-                            apresentação de áreas de atuação e formulário de contato otimizado.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <!-- Skills Usadas -->
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">JavaScript</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-green-500/10 text-green-400 border border-green-500/20">SEO
-                                - Optimization</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">HTML5</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">CSS3</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PROJETO 2 -->
-                <div class="project-card group bg-card border border-slate-700 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-secondary/20 transition-all duration-300 reveal hover:-translate-y-2"
-                    style="transition-delay: 100ms;">
-                    <div class="relative overflow-hidden h-48 bg-slate-700">
-                        <img src="assets/pfadvocacia_docs.png" alt="Projeto 2"
-                            class="project-img w-full h-full object-cover transition-transform duration-500">
-                        <div
-                            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                            <a href="https://github.com/IgorSabadini0/office_system-" target="_blank"
-                                class="bg-slate-900 text-white p-3 rounded-full hover:scale-110 transition-transform">
-                                <i class="ph-bold ph-github-logo text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3
-                                class="font-display text-xl font-bold text-white group-hover:text-secondary transition-colors">
-                                Gerenciador Sistema Jurídico</h3>
-                            <i class="ph-bold ph-folder-notch-open text-slate-500"></i>
-                        </div>
-                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">
-                            Aplicação full-stack <span style="font-weight: bold;">privada</span> com cadastro de
-                            usuários que consome uma API própria para o
-                            gerenciamento e localização eficiente de documentos e pastas.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-yellow-400/10 text-yellow-400 border border-yellow-400/20">JavaScript</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-green-500/10 text-green-400 border border-green-500/20">API
-                                Rest</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">MySQL</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">SASS</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-pink-500/10 text-pink-400 border border-pink-500/20">CSS3</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PROJETO 3 -->
-                <div class="project-card group bg-card border border-slate-700 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 reveal hover:-translate-y-2"
-                    style="transition-delay: 200ms;">
-                    <div class="relative overflow-hidden h-48 bg-slate-700">
-                        <img src="assets/Or_Shalom.png" alt="Or Shalom - Velas Artesanais"
-                            class="project-img w-full h-full object-cover transition-transform duration-500">
-                        <div
-                            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                            <a href="https://igorsabadini0.github.io/Matanah/" target="_blank"
-                                class="bg-white text-slate-900 p-3 rounded-full hover:scale-110 transition-transform">
-                                <i class="ph-bold ph-arrow-square-out text-xl"></i>
-                            </a>
-                            <a href="https://github.com/IgorSabadini0/Matanah" target="_blank"
-                                class="bg-slate-900 text-white p-3 rounded-full hover:scale-110 transition-transform">
-                                <i class="ph-bold ph-github-logo text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3
-                                class="font-display text-xl font-bold text-white group-hover:text-green-400 transition-colors">
-                                Or Shalom - Velas Artesanais</h3>
-                            <i class="ph-bold ph-desktop text-slate-500"></i>
-                        </div>
-                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">
-                            Landing page responsiva para uma marca de velas artesanais de luxo, com catálogo interativo
-                            e integração para encomendas via WhatsApp.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-yellow-400/10 text-yellow-400 border border-yellow-400/20">JavaScript</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">SASS</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-orange-500/10 text-orange-400 border border-orange-500/20">HTML5</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">CSS3</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-0.5 rounded bg-teal-500/10 text-teal-400 border border-teal-500/20">Figma</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Contato -->
-    <section id="contact" class="py-20 bg-slate-900 relative overflow-hidden">
-        <div
-            class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-slate-900 to-slate-900">
-        </div>
-
-        <div class="container mx-auto px-6 relative z-10 reveal">
-            <div
-                class="max-w-2xl mx-auto bg-card border border-slate-700 p-8 md:p-12 rounded-3xl shadow-2xl text-center">
-                <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">Vamos trabalhar juntos?</h2>
-                <p class="text-slate-400 mb-8">
-                    Estou sempre aberto a novos desafios e parcerias, caso tenha interesse.
-                    Entre em contato!
-                </p>
-
-                <abbr title="igorsabadini157@gmail.com" style="text-decoration: none; border-bottom: none;">
-                    <a href="mailto:igorsabadini157@gmail.com"
-                        class="inline-flex items-center gap-3 bg-gradient-to-r from-primary to-secondary hover:brightness-110 text-white font-bold py-4 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-purple-500/25">
-                        <i class="ph-bold ph-envelope-simple text-xl"></i>
-                        Enviar E-mail
+                        <img src="assets/pfadvocacia_site.png" alt="Página inicial do site Palhares Ferreira Advocacia" loading="lazy">
+                        <span class="view-project">Ver projeto <i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
                     </a>
-                </abbr>
-
-                <div class="email text-slate-300">igorsabadini157@gmail.com<div>
-
-                        <div class="flex justify-center gap-6 mt-10">
-                            <a href="https://github.com/IgorSabadini0" target="_blank"
-                                class="text-slate-400 hover:text-white transition-colors text-2xl hover:-translate-y-1 transform duration-300"><i
-                                    class="ph-fill ph-github-logo"></i></a>
-                            <a href="https://linkedin.com/in/igor-sabadini" target="_blank"
-                                class="text-slate-400 hover:text-white transition-colors text-2xl hover:-translate-y-1 transform duration-300"><i
-                                    class="ph-fill ph-linkedin-logo"></i></a>
+                    <div class="project-info">
+                        <div class="project-number">01</div>
+                        <div>
+                            <span class="project-type">Website institucional · 2026</span>
+                            <h3>Palhares Ferreira<br>Advocacia</h3>
+                            <p>Site institucional responsivo com arquitetura de conteúdo clara, apresentação das áreas de atuação e foco em contato e credibilidade.</p>
+                            <ul class="tag-list" aria-label="Tecnologias">
+                                <li>JavaScript</li><li>HTML5</li><li>CSS3</li><li>SEO</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="https://palharesferreiraadvocacia.com.br" target="_blank" rel="noopener noreferrer">Site ao vivo <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+                                <a href="https://github.com/IgorSabadini0/palharesferreiraadvocacia" target="_blank" rel="noopener noreferrer">Código <i class="ph ph-github-logo" aria-hidden="true"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-    </section>
+                </article>
 
-    <footer class="bg-slate-950 py-8 border-t border-slate-900">
-        <div class="container mx-auto px-6 text-center text-slate-600 text-sm">
-            <p>&copy; 2026 Igor Sabadini - Portfolio Dev
-            </p>
+                <article class="project project-reverse reveal" data-project="02">
+                    <a class="project-media project-media-dark" href="https://github.com/IgorSabadini0/office_system-" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositório do Sistema Jurídico">
+                        <div class="browser-chrome dark-chrome">
+                            <div><span></span><span></span><span></span></div>
+                            <p>office.system / dashboard</p>
+                            <i class="ph ph-lock-simple" aria-hidden="true"></i>
+                        </div>
+                        <img src="assets/pfadvocacia_docs.png" alt="Dashboard do sistema de gerenciamento jurídico" loading="lazy">
+                        <span class="view-project">Ver código <i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+                    </a>
+                    <div class="project-info">
+                        <div class="project-number">02</div>
+                        <div>
+                            <span class="project-type">Aplicação full-stack · Privado</span>
+                            <h3>Sistema de gestão<br>jurídica</h3>
+                            <p>Aplicação para cadastro de usuários, organização e localização eficiente de documentos e pastas, conectada a uma API própria.</p>
+                            <ul class="tag-list" aria-label="Tecnologias">
+                                <li>JavaScript</li><li>REST API</li><li>MySQL</li><li>Sass</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="https://github.com/IgorSabadini0/office_system-" target="_blank" rel="noopener noreferrer">Repositório <i class="ph ph-github-logo" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project reveal" data-project="03">
+                    <a class="project-media project-media-warm" href="https://igorsabadini0.github.io/Matanah/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Or Shalom Velas Artesanais">
+                        <div class="browser-chrome warm-chrome">
+                            <div><span></span><span></span><span></span></div>
+                            <p>or-shalom.com</p>
+                            <i class="ph ph-lock-simple" aria-hidden="true"></i>
+                        </div>
+                        <img src="assets/Or_Shalom.png" alt="Página inicial da marca Or Shalom Velas Artesanais" loading="lazy">
+                        <span class="view-project">Ver projeto <i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+                    </a>
+                    <div class="project-info">
+                        <div class="project-number">03</div>
+                        <div>
+                            <span class="project-type">Landing page · E-commerce</span>
+                            <h3>Or Shalom<br>Velas Artesanais</h3>
+                            <p>Landing page para uma marca de velas artesanais de luxo, com catálogo interativo e fluxo de encomendas integrado ao WhatsApp.</p>
+                            <ul class="tag-list" aria-label="Tecnologias">
+                                <li>JavaScript</li><li>Sass</li><li>HTML5</li><li>Figma</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="https://igorsabadini0.github.io/Matanah/" target="_blank" rel="noopener noreferrer">Site ao vivo <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+                                <a href="https://github.com/IgorSabadini0/Matanah" target="_blank" rel="noopener noreferrer">Código <i class="ph ph-github-logo" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="about section-shell" id="about">
+            <div class="about-grid">
+                <div class="about-title reveal">
+                    <span class="section-index">02 / SOBRE</span>
+                    <h2>Código com<br><em>intenção.</em></h2>
+                </div>
+                <div class="about-copy reveal">
+                    <p class="lead">Desenvolvo experiências digitais que equilibram <span>clareza visual</span>, engenharia e objetivos de negócio.</p>
+                    <p>Meu processo parte do problema real: entendo o contexto, organizo a experiência e construo uma solução responsiva, escalável e simples de usar.</p>
+                    <a class="text-link" href="mailto:igorsabadini157@gmail.com">Fale comigo <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <div class="capabilities">
+                <article class="capability reveal">
+                    <span class="capability-icon"><i class="ph ph-layout" aria-hidden="true"></i></span>
+                    <span class="capability-number">01</span>
+                    <h3>Interfaces &<br>experiências</h3>
+                    <p>Layouts responsivos, acessíveis e orientados à usabilidade, com atenção rigorosa aos detalhes.</p>
+                </article>
+                <article class="capability reveal">
+                    <span class="capability-icon"><i class="ph ph-brackets-curly" aria-hidden="true"></i></span>
+                    <span class="capability-number">02</span>
+                    <h3>Desenvolvimento<br>web</h3>
+                    <p>Sites e aplicações com código organizado, integrações robustas e performance desde o início.</p>
+                </article>
+                <article class="capability reveal">
+                    <span class="capability-icon"><i class="ph ph-rocket-launch" aria-hidden="true"></i></span>
+                    <span class="capability-number">03</span>
+                    <h3>Do conceito<br>ao deploy</h3>
+                    <p>Execução ponta a ponta: definição, protótipo, implementação, testes e publicação.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="contact-orb" aria-hidden="true"></div>
+            <div class="section-shell contact-inner reveal">
+                <span class="section-index">03 / CONTATO</span>
+                <p>Tem um projeto em mente?</p>
+                <h2>Vamos criar algo<br><em>que importa.</em></h2>
+                <div class="contact-actions">
+                    <a class="button button-dark magnetic" href="mailto:igorsabadini157@gmail.com">
+                        Iniciar uma conversa <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+                    <button class="copy-email" type="button" data-email="igorsabadini157@gmail.com">
+                        <i class="ph ph-copy" aria-hidden="true"></i>
+                        <span>Copiar e-mail</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer section-shell">
+        <div class="footer-brand">
+            <span class="brand-mark">IS</span>
+            <p>Desenvolvendo o digital<br>com intenção.</p>
+        </div>
+        <div class="footer-links">
+            <span>Social</span>
+            <a href="https://github.com/IgorSabadini0" target="_blank" rel="noopener noreferrer">GitHub <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+            <a href="https://linkedin.com/in/igor-sabadini" target="_blank" rel="noopener noreferrer">LinkedIn <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="footer-meta">
+            <a href="#home">Voltar ao topo <i class="ph ph-arrow-up" aria-hidden="true"></i></a>
+            <p>© <span id="current-year">2026</span> Igor Sabadini</p>
         </div>
     </footer>
-    <script src="js/script.js"></script>
-</body>
 
+    <div class="toast" id="toast" role="status" aria-live="polite">E-mail copiado</div>
+</body>
 </html>
