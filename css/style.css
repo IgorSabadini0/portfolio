@@ -12,6 +12,9 @@
     --max-width: 1380px;
     --radius: 28px;
     --ease: cubic-bezier(.2, .75, .25, 1);
+    --cursor-default: url("../assets/light/arrow.cur"), default;
+    --cursor-pointer: url("../assets/light/hand.cur"), pointer;
+    --cursor-text: url("../assets/light/ibeam.cur"), text;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -30,9 +33,19 @@ body {
     font-family: "Manrope", sans-serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    cursor: var(--cursor-default);
 }
 
 body.menu-open { overflow: hidden; }
+
+:where(p, h1, h2, h3, h4, h5, h6, li, dt, dd, blockquote, code, pre, span, input, textarea, [contenteditable="true"]) {
+    cursor: var(--cursor-text);
+}
+
+:where(a, button, [role="button"], summary, label),
+:where(a, button, [role="button"], summary, label) * {
+    cursor: var(--cursor-pointer);
+}
 
 ::selection { background: var(--acid); color: var(--ink); }
 ::-webkit-scrollbar { width: 8px; }
@@ -279,7 +292,7 @@ img { display: block; max-width: 100%; }
     border-radius: 99px;
     font-size: 13px;
     font-weight: 800;
-    cursor: pointer;
+    cursor: var(--cursor-pointer);
     transition: transform .3s var(--ease), box-shadow .3s;
 }
 
@@ -426,7 +439,7 @@ img { display: block; max-width: 100%; }
 .contact-actions { display: flex; align-items: center; gap: 25px; margin-top: 48px; }
 .button-dark { background: var(--ink); color: var(--paper); }
 .button-dark:hover { box-shadow: 0 14px 40px rgba(0,0,0,.22); }
-.copy-email { display: inline-flex; align-items: center; gap: 10px; border: 0; border-bottom: 1px solid rgba(10,10,10,.5); background: none; padding: 8px 0; font-size: 12px; font-weight: 800; cursor: pointer; }
+.copy-email { display: inline-flex; align-items: center; gap: 10px; border: 0; border-bottom: 1px solid rgba(10,10,10,.5); background: none; padding: 8px 0; font-size: 12px; font-weight: 800; cursor: var(--cursor-pointer); }
 .contact-orb { position: absolute; width: 520px; height: 520px; right: -70px; top: 50%; transform: translateY(-50%); border: 1px solid rgba(10,10,10,.15); border-radius: 50%; box-shadow: 0 0 0 80px rgba(10,10,10,.035), 0 0 0 160px rgba(10,10,10,.025); }
 
 .site-footer { min-height: 260px; padding-block: 68px 38px; display: grid; grid-template-columns: 1fr auto auto; gap: 110px; align-items: end; }
