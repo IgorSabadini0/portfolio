@@ -1,11 +1,11 @@
-/* Mantém as capturas completas, independentemente da proporção de cada projeto. */
+/* Mantém uma proporção editorial consistente entre os cases. */
 .project-media img {
     width: 100%;
     height: auto;
-    aspect-ratio: auto;
+    aspect-ratio: 16 / 10;
     display: block;
-    object-fit: contain;
-    object-position: center;
+    object-fit: cover;
+    object-position: top;
 }
 
 .project-media-clinic {

@@ -123,7 +123,8 @@
     }
 
     const canvas = document.getElementById('ambient-canvas');
-    if (!reducedMotion && canvas) {
+    const allowAmbientMotion = !reducedMotion && window.matchMedia('(pointer: fine) and (min-width: 900px)').matches;
+    if (allowAmbientMotion && canvas) {
         const context = canvas.getContext('2d');
         let particles = [];
         let animationFrame;
