@@ -275,6 +275,14 @@ img { display: block; max-width: 100%; }
     animation: statusPulse 2.4s infinite;
 }
 
+.brazil-flag {
+    width: 18px;
+    height: auto;
+    flex: 0 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.16), 0 3px 8px rgba(0,0,0,.3);
+}
+
 .hero-intro { opacity: 0; animation: fadeUp .8s .15s var(--ease) forwards; }
 
 .hero-title {
@@ -515,7 +523,7 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 850px) {
     .section-shell { width: min(calc(100% - 40px), var(--max-width)); }
-    .site-header { top: 12px; left: 20px; right: 20px; width: auto; height: 68px; padding-inline: 12px; grid-template-columns: 1fr auto; transform: none; }
+    .site-header { top: 12px; left: 20px; right: 20px; width: auto; height: 68px; padding-inline: 12px; grid-template-columns: 1fr auto; transform: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
     .site-header.scrolled { top: 8px; }
     .desktop-nav, .header-cta { display: none; }
     .menu-toggle { display: grid; place-content: center; gap: 6px; width: 45px; height: 45px; border: 1px solid var(--line); border-radius: 50%; background: #151615; position: relative; z-index: 3; }
